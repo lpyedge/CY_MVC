@@ -1,0 +1,63 @@
+﻿<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="我的关键词" />
+    @Html.Raw(System.Web.Optimization.Scripts.Render("~/Bundle/Site.js"))
+    @System.Web.Optimization.Styles.Render("~/Bundle/Site.css").ToHtmlString()
+</head>
+<body>
+    <div id="wrapper">
+
+        <div id="header">
+            <div class="site">
+                <h2>
+                    <a href="#">模版位置</a>
+                </h2>
+                <p>
+                    @Model["TemplatePath"]
+                </p>
+            </div>
+        </div>
+        <div id="container">
+            <div id="content">
+                <form action="/news.html" method="post">
+                    <input type="text" name="pageindex" value="1" />
+                    <input type="submit" name="news" value="提交到新闻页" />
+                </form>
+                <form action="/index222.html" method="post">
+                    <input type="hidden" name="password" value="nonehahaha" />
+                    <input type="text" name="word" value="aaaaa" />
+                    <input type="submit" name="index" value="提交到Remap首页" />
+                </form>
+                <br />
+                <br />
+                <input type="button" value="测试Command" onclick=" GetCommand() " />
+                <script type="text/javascript">
+                    function GetCommand() {
+                        CY.Ajax("/cmd.ashx", "Test", {}, function (data) {
+                            alert(data);
+                        });
+                    }
+
+
+                </script>
+            </div>
+        </div>
+
+        @{
+            var str = "abc";
+            ////下面会输出：this is a mail：dxl0321@qq.com, this is var: abc,this is mail@str,this is @；
+            @: this is a mail：dxl0321@qq.com, this is var: @str,this is mail@str,this is @@；
+        //下面输出abc
+        @str
+        }
+        <div id="footer">
+            <div class="powered">
+                Processed in @Model["processtime"] Milliseconds(s), queries. Powered by <a href="http://www.lpyedge.com" target="_blank" title="CY_MVC">CY_MVC</a>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,122 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVC", "MVC", "{55219C77-9E12-4CD3-84CD-9D9A000816B3}"
+	ProjectSection(SolutionItems) = preProject
+		MVC\待完成.txt = MVC\待完成.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyGenerate", "MVC\KeyGenerate\KeyGenerate.csproj", "{087A0573-B4B0-4C9B-9497-E096B2682AE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewNVelocity", "MVC\ViewNVelocity\ViewNVelocity.csproj", "{E6A86814-F918-4A0F-B2FC-B8D6A4D394EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Smaple", "Smaple", "{1648DF9C-6346-4AEB-86EF-B4C01CBFD798}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyControllers", "Smaple\MyControllers\MyControllers.csproj", "{5A66A109-5F94-4E5C-97EB-CF3F518528F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TespLib", "Smaple\TespLib\TespLib.csproj", "{63415C68-C810-4082-9182-08C3ED8FB67A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlRewritePreRules", "Smaple\UrlRewritePreRules\UrlRewritePreRules.csproj", "{7CB5204F-AD9A-4C3C-905A-0576C55A9929}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewRazor", "MVC\ViewRazor\ViewRazor.csproj", "{BB3B77ED-0BB2-423E-8776-0ACEBC21FDE9}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MVCSite", "Smaple\MVCSite\", "{2E6248B2-4BCC-46F4-8A3A-93725A01543A}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{5c6a5811-1c51-47c2-b174-7eb8e4fa4ccc}|CY_MVC4.dll;{5a66a109-5f94-4e5c-97eb-cf3f518528f0}|MyControllers.dll;{63415C68-C810-4082-9182-08C3ED8FB67A}|TespLib.dll;{7cb5204f-ad9a-4c3c-905a-0576c55a9929}|UrlRewritePreRules.dll;{e6a86814-f918-4a0f-b2fc-b8d6a4d394eb}|ViewNVelocity.dll;{bb3b77ed-0bb2-423e-8776-0acebc21fde9}|ViewRazor.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_80"
+		Debug.AspNetCompiler.PhysicalPath = "Smaple\MVCSite\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_80\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_80"
+		Release.AspNetCompiler.PhysicalPath = "Smaple\MVCSite\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_80\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "9764"
+		SlnRelativePath = "Smaple\MVCSite\"
+		StartServerOnDebug = "true"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CY_MVC", "MVC\CY_MVC\CY_MVC.csproj", "{5C6A5811-1C51-47C2-B174-7EB8E4FA4CCC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		NoKey|Any CPU = NoKey|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{087A0573-B4B0-4C9B-9497-E096B2682AE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{087A0573-B4B0-4C9B-9497-E096B2682AE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{087A0573-B4B0-4C9B-9497-E096B2682AE2}.NoKey|Any CPU.ActiveCfg = NoKey|Any CPU
+		{087A0573-B4B0-4C9B-9497-E096B2682AE2}.NoKey|Any CPU.Build.0 = NoKey|Any CPU
+		{087A0573-B4B0-4C9B-9497-E096B2682AE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{087A0573-B4B0-4C9B-9497-E096B2682AE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6A86814-F918-4A0F-B2FC-B8D6A4D394EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6A86814-F918-4A0F-B2FC-B8D6A4D394EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6A86814-F918-4A0F-B2FC-B8D6A4D394EB}.NoKey|Any CPU.ActiveCfg = NoKey|Any CPU
+		{E6A86814-F918-4A0F-B2FC-B8D6A4D394EB}.NoKey|Any CPU.Build.0 = NoKey|Any CPU
+		{E6A86814-F918-4A0F-B2FC-B8D6A4D394EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6A86814-F918-4A0F-B2FC-B8D6A4D394EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A66A109-5F94-4E5C-97EB-CF3F518528F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A66A109-5F94-4E5C-97EB-CF3F518528F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A66A109-5F94-4E5C-97EB-CF3F518528F0}.NoKey|Any CPU.ActiveCfg = NoKey|Any CPU
+		{5A66A109-5F94-4E5C-97EB-CF3F518528F0}.NoKey|Any CPU.Build.0 = NoKey|Any CPU
+		{5A66A109-5F94-4E5C-97EB-CF3F518528F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A66A109-5F94-4E5C-97EB-CF3F518528F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63415C68-C810-4082-9182-08C3ED8FB67A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63415C68-C810-4082-9182-08C3ED8FB67A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63415C68-C810-4082-9182-08C3ED8FB67A}.NoKey|Any CPU.ActiveCfg = NoKey|Any CPU
+		{63415C68-C810-4082-9182-08C3ED8FB67A}.NoKey|Any CPU.Build.0 = NoKey|Any CPU
+		{63415C68-C810-4082-9182-08C3ED8FB67A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63415C68-C810-4082-9182-08C3ED8FB67A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CB5204F-AD9A-4C3C-905A-0576C55A9929}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CB5204F-AD9A-4C3C-905A-0576C55A9929}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CB5204F-AD9A-4C3C-905A-0576C55A9929}.NoKey|Any CPU.ActiveCfg = NoKey|Any CPU
+		{7CB5204F-AD9A-4C3C-905A-0576C55A9929}.NoKey|Any CPU.Build.0 = NoKey|Any CPU
+		{7CB5204F-AD9A-4C3C-905A-0576C55A9929}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CB5204F-AD9A-4C3C-905A-0576C55A9929}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB3B77ED-0BB2-423E-8776-0ACEBC21FDE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB3B77ED-0BB2-423E-8776-0ACEBC21FDE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB3B77ED-0BB2-423E-8776-0ACEBC21FDE9}.NoKey|Any CPU.ActiveCfg = NoKey|Any CPU
+		{BB3B77ED-0BB2-423E-8776-0ACEBC21FDE9}.NoKey|Any CPU.Build.0 = NoKey|Any CPU
+		{BB3B77ED-0BB2-423E-8776-0ACEBC21FDE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB3B77ED-0BB2-423E-8776-0ACEBC21FDE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E6248B2-4BCC-46F4-8A3A-93725A01543A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E6248B2-4BCC-46F4-8A3A-93725A01543A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E6248B2-4BCC-46F4-8A3A-93725A01543A}.NoKey|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E6248B2-4BCC-46F4-8A3A-93725A01543A}.NoKey|Any CPU.Build.0 = Debug|Any CPU
+		{2E6248B2-4BCC-46F4-8A3A-93725A01543A}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E6248B2-4BCC-46F4-8A3A-93725A01543A}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{5C6A5811-1C51-47C2-B174-7EB8E4FA4CCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C6A5811-1C51-47C2-B174-7EB8E4FA4CCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C6A5811-1C51-47C2-B174-7EB8E4FA4CCC}.NoKey|Any CPU.ActiveCfg = NoKey|Any CPU
+		{5C6A5811-1C51-47C2-B174-7EB8E4FA4CCC}.NoKey|Any CPU.Build.0 = NoKey|Any CPU
+		{5C6A5811-1C51-47C2-B174-7EB8E4FA4CCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C6A5811-1C51-47C2-B174-7EB8E4FA4CCC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{087A0573-B4B0-4C9B-9497-E096B2682AE2} = {55219C77-9E12-4CD3-84CD-9D9A000816B3}
+		{E6A86814-F918-4A0F-B2FC-B8D6A4D394EB} = {55219C77-9E12-4CD3-84CD-9D9A000816B3}
+		{5A66A109-5F94-4E5C-97EB-CF3F518528F0} = {1648DF9C-6346-4AEB-86EF-B4C01CBFD798}
+		{63415C68-C810-4082-9182-08C3ED8FB67A} = {1648DF9C-6346-4AEB-86EF-B4C01CBFD798}
+		{7CB5204F-AD9A-4C3C-905A-0576C55A9929} = {1648DF9C-6346-4AEB-86EF-B4C01CBFD798}
+		{BB3B77ED-0BB2-423E-8776-0ACEBC21FDE9} = {55219C77-9E12-4CD3-84CD-9D9A000816B3}
+		{2E6248B2-4BCC-46F4-8A3A-93725A01543A} = {1648DF9C-6346-4AEB-86EF-B4C01CBFD798}
+		{5C6A5811-1C51-47C2-B174-7EB8E4FA4CCC} = {55219C77-9E12-4CD3-84CD-9D9A000816B3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {063CC5BD-CC3D-4B9A-AEC8-376E50A7B238}
+	EndGlobalSection
+EndGlobal

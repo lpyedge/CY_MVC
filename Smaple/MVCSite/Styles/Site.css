@@ -1,0 +1,187 @@
+﻿body {
+    background: #b6b7bc;
+    font-size: .8em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    color: #696969;
+    margin: 0;
+    padding: 0;
+}
+
+a:hover {
+    color: #1d60ff;
+    text-decoration: none;
+}
+
+p {
+    margin-bottom: 10px;
+    line-height: 1.6em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1.5em;
+    color: #666;
+    font-variant: small-caps;
+    text-transform: none;
+    font-weight: 200;
+    margin-bottom: 0;
+}
+
+h1 {
+    font-size: 1.6em;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+h3 { font-size: 1.2em; }
+
+h4 { font-size: 1.1em; }
+
+h5, h6 { font-size: 1em; }
+
+.rightColumn > h1, .rightColumn > h2, .leftColumn > h1, .leftColumn > h2 { margin-top: 0; }
+
+.page {
+    width: 960px;
+    background-color: #fff;
+    border: 1px solid #496077;
+    margin: 20px auto 0;
+}
+
+.header {
+    position: relative;
+    background: #4b6c9e;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.header h1 {
+    font-weight: 700;
+    color: #f9f9f9;
+    border: none;
+    line-height: 2em;
+    font-size: 2em;
+    margin: 0;
+    padding: 0 0 0 20px;
+}
+
+.main {
+    min-height: 420px;
+    margin: 12px 8px 8px;
+    padding: 0 12px;
+}
+
+.leftCol {
+    width: 200px;
+    min-height: 200px;
+    margin: 12px 8px 8px;
+    padding: 6px 0;
+}
+
+.footer {
+    color: #4e5766;
+    text-align: center;
+    line-height: normal;
+    margin: 0 auto;
+    padding: 8px 0 0;
+}
+
+div.hideSkiplink {
+    background-color: #3a4f63;
+    width: 100%;
+}
+
+div.menu { padding: 4px 0 4px 8px; }
+
+div.menu ul {
+    list-style: none;
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+
+div.menu ul li a, div.menu ul li a:visited {
+    background-color: #465c71;
+    border: 1px #4e667d solid;
+    color: #dde4ec;
+    display: block;
+    line-height: 1.35em;
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 4px 20px;
+}
+
+div.menu ul li a:hover {
+    background-color: #bfcbd6;
+    color: #465c71;
+    text-decoration: none;
+}
+
+div.menu ul li a:active {
+    background-color: #465c71;
+    color: #cfdbe6;
+    text-decoration: none;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 1em;
+}
+
+fieldset p { margin: 2px 12px 10px 10px; }
+
+fieldset.login label, fieldset.register label, fieldset.changePassword label { display: block; }
+
+fieldset label.inline { display: inline; }
+
+legend {
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 2px 4px 8px;
+}
+
+div.accountInfo { width: 42%; }
+
+.clear { clear: both; }
+
+.title {
+    display: block;
+    float: left;
+    text-align: left;
+    width: auto;
+}
+
+.loginDisplay {
+    font-size: 1.1em;
+    display: block;
+    text-align: right;
+    color: #fff;
+    padding: 10px;
+}
+
+.failureNotification {
+    font-size: 1.2em;
+    color: red;
+}
+
+.bold { font-weight: 700; }
+
+.submitButton {
+    text-align: right;
+    padding-right: 10px;
+}
+
+a:link, a:visited, a:active { color: #034af3; }
+
+input.textEntry, input.passwordEntry {
+    width: 320px;
+    border: 1px solid #ccc;
+}
+
+.loginDisplay a:link, .loginDisplay a:visited, .loginDisplay a:hover { color: #fff; }

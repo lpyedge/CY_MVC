@@ -1,0 +1,18 @@
+#parse("Templates/ViewNvelocity/_header.vm")
+<div id="content">
+    <form action="/news.html" method="post">
+    <input type="text" name="pageindex" value="1" />
+    <input type="submit" name="news" value="提交到新闻页" />
+    </form>
+    <br />
+    <br />    
+    <input type="button" value="测试Command" onclick="GetCommand()" />
+    <script type="text/javascript">
+       function GetCommand() {
+            Ajax("/cmd.ashx", "Test", {}, function (data) {
+                alert(data);
+            });
+        }
+    </script>
+</div>
+#parse("Templates/ViewNvelocity/_footer.vm")

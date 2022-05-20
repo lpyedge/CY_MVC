@@ -1,0 +1,5 @@
+<ArrayOfSeoRule>
+  <SeoRule PageName="default" Title="default [name] Titletest:[test]" Keywords="default [name] Keywordstest:[test]" Description="default [name] Descriptiontest:[test]" />
+  <SeoRule PageName="news.newsdetail" Title="news.newsdetail" Keywords="news.newsdetail" Description="news.newsdetail" />
+  <SeoRule PageName="newsdetail" Title="newsdetail" Keywords="newsdetail" Description="newsdetail" />
+</ArrayOfSeoRule>

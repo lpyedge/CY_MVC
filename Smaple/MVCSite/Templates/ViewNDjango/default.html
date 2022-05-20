@@ -1,0 +1,41 @@
+﻿{% extends ExtendPage %}
+
+{% block content %}
+<div id="content">
+    <form action="/news.html" method="post">
+        <input type="text" name="pageindex" value="1"/>
+        <input type="submit" name="news" value="提交到新闻页"/>
+    </form>
+    <br/>
+    <br/>
+    <input id="islogin" type="checkbox"/>
+    <input type="button" value="设置登录状态" onclick=" SetLogin() "/>
+    <br/>
+    <br/>
+    用户名：<input id="username" type="text" value="yonghuming"/>
+    密码：<input id="password" type="text" value="mima"/>
+    <input type="button" value="检查登录状态" onclick=" CheckLogin() "/>
+    <br/>
+    <br/>
+    <input type="button" value="获取model" onclick=" GetNews() "/>
+    <script type="text/javascript">
+        function SetLogin() {
+            AjaxP("/default.html", "SetLogin", { "res": $("#islogin:checked").length > 0 }, function(data) {
+                alert("设置成功" + data);
+            });
+        }
+
+        function CheckLogin() {
+            AjaxP("/default.aspx", "CheckLogin", { "username": $("#username").val(), "password": $("#password").val() }, function(data) {
+                alert(data);
+            });
+        }
+
+        function GetNews() {
+            AjaxP("/default.aspx", "GetNews", { "id": 3, "hot": true }, function(data) {
+                alert(data.Title + "\r\n" + data.Hot + "\r\n" + data.URL);
+            });
+        }
+    </script>
+</div>
+{% endblock %}

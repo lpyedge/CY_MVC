@@ -1,0 +1,21 @@
+﻿<div class="datapage">
+    <ul>
+        <li>
+            <a href="{{datapage.FirstPage.Value}}">{{datapage.FirstPage.Key}}</a>
+        </li>
+        <li>
+            <a href="{{datapage.PreviousPage.Value}}">{{datapage.PreviousPage.Key}}</a>
+        </li>
+        {% for item in datapage.PageList %}
+        <li>
+            <a href="{{item.Value}}">{{item.Key}}</a>
+        </li>
+        {% endfor %}
+        <li>
+            <a href="{{datapage.NextPage.Value}}">{{datapage.NextPage.Key}}</a>
+        </li>
+        <li>
+            <a href="{{datapage.LastPage.Value}}">{{datapage.LastPage.Key}}</a>
+        </li>
+    </ul>
+</div>

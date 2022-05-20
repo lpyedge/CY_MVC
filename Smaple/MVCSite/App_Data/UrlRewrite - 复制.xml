@@ -1,0 +1,20 @@
+<ArrayOfUrlRewriteRule>
+  <UrlRewriteRule ShowUrl="/a" RealUrl="/a.html" ReDirect="false" Stop="true" /> 
+  <UrlRewriteRule ShowUrl="/index/(?&lt;key&gt;[\w \-\.:\(\)\[\]'`&quot;,]+)" RealUrl="~/default.html?id=$[key]"
+                  Stop="true" />
+  
+  <UrlRewriteRule ShowUrl="~/index.html" RealUrl="~/default.html" Stop="true" />
+  <UrlRewriteRule ShowUrl="~/news.html" RealUrl="~/newslist.html" Stop="true" />
+  <UrlRewriteRule ShowUrl="~/news.(\d+).html" RealUrl="~/newslist.html?page=$1" Stop="true" />
+  <UrlRewriteRule ShowUrl="~/newsdetail.(\d+).html" RealUrl="~/news/newsdetail.html?id=$1" Stop="true" />
+  <UrlRewriteRule ShowUrl="/News/(?&lt;title&gt;[\w \,\.:\(\)\[\]'`&quot;,\+×!\?÷\-]+)" RealUrl="~/default.html?id=$[title]" ReDirect="false" Stop="true" />
+  
+  <UrlRewriteRule ShowUrl="~/index" RealUrl="~/default.html?id=111" Stop="true" />
+  <UrlRewriteRule ShowUrl="~/index222.html" RealUrl="~/default.html?id=222" Stop="true" />
+  <UrlRewriteRule ShowUrl="http://(\w+).zywj.com" RealUrl="http://localhost:13131/default.html?id=$1" ReDirect="true"
+                  Stop="true" />
+  
+  <UrlRewriteRule ShowUrl="/(\d+)" RealUrl="/default.html?id=$1" Stop="true" />
+  <UrlRewriteRule ShowUrl="/" RealUrl="/default.html?id=4444" ReDirect="false" Stop="true" />
+  
+</ArrayOfUrlRewriteRule>

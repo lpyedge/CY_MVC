@@ -1,0 +1,102 @@
+1)分页问题:如何生成分页代码(ok)
+2)Ajax问题:和服务器代码实现交互(ok)
+3)cookies测试是否能用(ok)
+4)页面缓存(ok)
+5)向页面输出javascript(ok)
+6)MVC模式和webform模式兼容实现(ok)
+7)Response.Redirect跳转(ok)
+8)SEO功能，方便自定义标题，关键字和描述(ok)
+9)CYTemplate模板.net原生语法实现,语法提示，自动着色(ok)
+10)合并且缓存css和js资源文件(ok)       !!!!!不需要合并缓存的文件请修改为添加hidden属性
+11)过滤关键词页面显示(ok)
+12)url重写实现跨域名重写以及url跳转的功能(ok)
+13)url重写实现自定义添加query参数并能自动识别并添加到要重写的地址上(ok)
+14)ip及ip段访问限制
+
+
+ViewDefault|246|12|745
+ViewDefault|0|0|13
+ViewDefault|0|5|60
+
+
+ViewNVelocity|55|10|600
+ViewNVelocity|0|0|14
+ViewNVelocity|23|16|85
+
+
+ViewRazor|33|443|956
+ViewRazor|0|0|11
+ViewRazor|0|609|666
+ViewRazor|0|4|57
+
+
+
+ViewRazor
+
+   ProcessPageLoad: 3
+   ProcessTotal: 640
+   ResourceMerge: 33
+   Seo: 0
+   Server: Microsoft-IIS/10.0
+   Set-Cookie: ASP.NET_SessionId=uu5h3wipp0wgeii10dwo40k3; path=/; HttpOnly
+   ViewTemplateBuild: 476
+   ViewTemplateGenerate: 101
+   WordFilter: 16
+   
+   ProcessPageLoad: 3
+   ProcessTotal: 464
+   ResourceMerge: 19
+   Seo: 0
+   Server: Microsoft-IIS/10.0
+   ViewTemplateBuild: 432
+   ViewTemplateGenerate: 0
+   WordFilter: 3
+
+   ProcessPageLoad: 0
+   ProcessTotal: 33
+   ResourceMerge: 21
+   Seo: 0
+   Server: Microsoft-IIS/10.0
+   ViewTemplateBuild: 2
+   ViewTemplateGenerate: 0
+   WordFilter: 4
+
+
+ViewDefault
+   
+   ProcessPageLoad: 3
+   ProcessTotal: 83
+   ResourceMerge: 38
+   Seo: 0
+   Server: Microsoft-IIS/10.0
+   ViewTemplateBuild: 12
+   ViewTemplateGenerate: 4
+   WordFilter: 16
+   
+   ProcessPageLoad: 3
+   ProcessTotal: 33
+   ResourceMerge: 15
+   Seo: 0
+   Server: Microsoft-IIS/10.0
+   ViewTemplateBuild: 5
+   ViewTemplateGenerate: 0
+   WordFilter: 2
+
+   ProcessPageLoad: 0
+   ProcessTotal: 28
+   ResourceMerge: 16
+   Seo: 0
+   Server: Microsoft-IIS/10.0
+   ViewTemplateBuild: 1
+   ViewTemplateGenerate: 0
+   WordFilter: 5
+
+某些情况下会出现在iisexpress8下面用vs调试网站内存溢出死循环的错误提示
+解决方案如下
+打开root web.config(在C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config中)，将这个内容的“add”改为“remove”
+<compilation> 
+        <assemblies> 
+            <remove assembly="Microsoft.VisualStudio.Web.PageInspector.Loader, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+还有就是
+C:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files 赋予当前用户或者用户组读写权限
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files 赋予当前用户或者用户组读写权限

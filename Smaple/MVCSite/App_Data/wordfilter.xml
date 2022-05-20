@@ -1,0 +1,4 @@
+﻿<ArrayOfWordFilterRule>
+  <WordFilterRule MaskWord="haha" ShowWord="" />
+  <WordFilterRule MaskWord="好人" ShowWord="坏人" />
+</ArrayOfWordFilterRule>

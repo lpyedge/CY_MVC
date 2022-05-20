@@ -1,0 +1,50 @@
+﻿@using System
+@using System.Collections.Generic
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<table>
+    @{ var mdate = DateTime.Parse("2015-10-01"); }
+    @foreach (MyControllers.Models.News item in (Model["list"] as List<MyControllers.Models.News>))
+    {
+        <tr>
+            <td>
+                <a href="@item.URL">
+                    @item.Title</a>
+            </td>
+            <td>
+                @item.AddDate
+                @if (item.AddDate > mdate)
+                {
+                    <label>陌生</label>
+                }
+                else
+                {
+                    <label>熟悉</label>
+                }
+            </td>
+            <td>
+
+                @if (item.Hot)
+                {
+                    <label>热门</label>
+                }
+                else
+                {
+                    <label>冷门</label>
+                }
+            </td>
+            <td>
+                @item.Key
+
+            </td>
+        </tr>
+    }
+</table>
+<br/>
+@RenderPage("_page.cshtml")
+</body>
+</html>

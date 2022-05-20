@@ -1,0 +1,25 @@
+﻿<div class="datapage">
+    <ul>
+        <li>
+            <a href="<%= (ViewData["datapage"] as CY_MVC.Utility.DataPage).FirstPage.Value %>"><%= (ViewData["datapage"] as CY_MVC.Utility.DataPage).FirstPage.Key %></a>
+        </li>
+        <li>
+            <a href="<%= (ViewData["datapage"] as CY_MVC.Utility.DataPage).PreviousPage.Value %>"><%= (ViewData["datapage"] as CY_MVC.Utility.DataPage).PreviousPage.Key %></a>
+        </li>
+        <% foreach (KeyValuePair<ulong,string> item in (ViewData["datapage"] as CY_MVC.Utility.DataPage).PageList)
+        {
+        %>
+        <li>
+            <a href="<%= item.Value %>"><%= item.Key %></a>
+        </li>
+        <%
+        }
+        %>
+        <li>
+            <a href="<%= (ViewData["datapage"] as CY_MVC.Utility.DataPage).NextPage.Value %>"><%= (ViewData["datapage"] as CY_MVC.Utility.DataPage).NextPage.Key %></a>
+        </li>
+        <li>
+            <a href="<%= (ViewData["datapage"] as CY_MVC.Utility.DataPage).LastPage.Value %>"><%= (ViewData["datapage"] as CY_MVC.Utility.DataPage).LastPage.Key %></a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,585 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CY_MVC</name>
+    </assembly>
+    <members>
+        <member name="P:CY_MVC.HttpHandlers.PageHandler.Title">
+            <summary>
+                Seo标题
+            </summary>
+        </member>
+        <member name="P:CY_MVC.HttpHandlers.PageHandler.Keywords">
+            <summary>
+                Seo关键词
+            </summary>
+        </member>
+        <member name="P:CY_MVC.HttpHandlers.PageHandler.Description">
+            <summary>
+                Seo说明
+            </summary>
+        </member>
+        <member name="P:CY_MVC.HttpHandlers.PageHandler.TemplatePath">
+            <summary>
+                模版路径，基于网站根目录
+            </summary>
+        </member>
+        <member name="P:CY_MVC.HttpHandlers.PageHandler.ViewData">
+            <summary>
+                模版视图
+            </summary>
+        </member>
+        <member name="T:CY_MVC.HttpHandlers.BaseHandler">
+            <summary>
+                后台类基类
+            </summary>
+        </member>
+        <member name="P:CY_MVC.HttpHandlers.BaseHandler.IsPostBack">
+            <summary>
+                是否是POST请求
+            </summary>
+        </member>
+        <member name="M:CY_MVC.HttpHandlers.BaseHandler.ProcessRequest(System.Web.HttpContext)">
+            <summary>
+                执行请求
+            </summary>
+            <param name="p_Context"></param>
+        </member>
+        <member name="P:CY_MVC.HttpHandlers.BaseHandler.IsReusable">
+            <summary>
+                能否重用
+            </summary>
+        </member>
+        <member name="M:CY_MVC.HttpHandlers.BaseHandler.Page_Load">
+            <summary>
+                页面加载方法
+            </summary>
+        </member>
+        <member name="M:CY_MVC.HttpHandlers.BaseHandler.Init(System.Web.HttpContext)">
+            <summary>
+                后台类初始化
+            </summary>
+            <param name="p_Context"></param>
+        </member>
+        <member name="F:CY_MVC.HttpHandlers.BaseHandler.Items">
+            <summary>
+                Items
+            </summary>
+        </member>
+        <member name="F:CY_MVC.HttpHandlers.BaseHandler.Request">
+            <summary>
+                Request
+            </summary>
+        </member>
+        <member name="F:CY_MVC.HttpHandlers.BaseHandler.Response">
+            <summary>
+                Response
+            </summary>
+        </member>
+        <member name="F:CY_MVC.HttpHandlers.BaseHandler.Session">
+            <summary>
+                Session
+            </summary>
+        </member>
+        <member name="F:CY_MVC.HttpHandlers.BaseHandler.Server">
+            <summary>
+                Server
+            </summary>
+        </member>
+        <member name="F:CY_MVC.HttpHandlers.BaseHandler.CacheSeconds">
+            <summary>
+                缓存时间(秒) 默认为0 不缓存
+            </summary>
+        </member>
+        <member name="P:CY_MVC.HttpHandlers.BaseHandler.Name">
+            <summary>
+                后台类名称
+            </summary>
+        </member>
+        <member name="T:CY_MVC.Seo.SeoHelper">
+            <summary>
+                UrlRewrite工具类
+                要在web.config的AppSettings里面设置字段SEORulesPath为UrlRewrite规则的路径
+            </summary>
+        </member>
+        <member name="T:CY_MVC.UrlRewrite.UrlRewriteHelper">
+            <summary>
+            UrlRewrite工具类
+            </summary>
+        </member>
+        <member name="M:CY_MVC.UrlRewrite.UrlRewriteHelper.RewriteUrl(System.Web.HttpContext,System.String)">
+            <summary>
+                RemapUrl's a URL using <b>HttpContext.RemapUrl()</b>.
+            </summary>
+            <param name="p_Context">The HttpContext object to remap the URL to.</param>
+            <param name="p_RemapUrl">The URL to remap to.</param>
+        </member>
+        <member name="M:CY_MVC.UrlRewrite.UrlRewriteHelper.ResolveUrl(System.String,System.String)">
+            <summary>
+                Converts a URL into one that is usable on the requesting client.
+            </summary>
+            <remarks>
+                Converts ~ to the requesting application path.  Mimics the behavior of the
+                <b>Control.ResolveUrl()</b> method, which is often used by control developers.
+            </remarks>
+            <param name="p_AppPath">The application path.</param>
+            <param name="p_Url">The URL, which might contain ~.</param>
+            <returns>
+                A resolved URL.  If the input parameter <b>url</b> contains ~, it is replaced with the
+                value of the <b>appPath</b> parameter.
+            </returns>
+        </member>
+        <member name="T:CY_MVC.Utility.HASHCrypto">
+            <summary>
+            不可逆加密辅助类
+            </summary>
+        </member>
+        <member name="M:CY_MVC.Utility.HASHCrypto.Generate(CY_MVC.Utility.HASHCrypto.DEncryptEnum,System.String,System.Text.Encoding)">
+            <summary>
+            创建不可逆加密类
+            </summary>
+            <param name="p_DEncryptType">加密类型</param>
+            <param name="p_SecretKey">密钥</param>
+            <param name="p_Encoding">编码格式</param>
+            <returns>返回加密类HashAlgorithm</returns>
+        </member>
+        <member name="M:CY_MVC.Utility.HASHCrypto.Encrypt(System.Security.Cryptography.HashAlgorithm,System.String)">
+            <summary>
+            加密
+            </summary>
+            <param name="p_Provider">加密类HashAlgorithm</param>
+            <param name="p_InputText">待加密字符串</param>
+            <returns>返回大写字符串</returns>
+        </member>
+        <member name="M:CY_MVC.Utility.HASHCrypto.Encrypt(System.Security.Cryptography.HashAlgorithm,System.Byte[])">
+            <summary>
+            加密
+            </summary>
+            <param name="p_Provider">加密类HashAlgorithm</param>
+            <param name="p_InputBuff">待加密字节数组</param>
+            <returns>返回大写字符串</returns>
+        </member>
+        <member name="M:CY_MVC.Utility.HASHCrypto.Encrypt2Byte(System.Security.Cryptography.HashAlgorithm,System.String)">
+             <summary>
+            加密
+             </summary>
+             <param name="p_Provider">加密类HashAlgorithm</param>
+             <param name="p_InputText">待加密字符串</param>
+             <returns>返回字节数组</returns>
+        </member>
+        <member name="M:CY_MVC.Utility.HASHCrypto.Encrypt2Byte(System.Security.Cryptography.HashAlgorithm,System.Byte[])">
+            <summary>
+            加密
+            </summary>
+            <param name="p_Provider">加密类HashAlgorithm</param>
+            <param name="p_InputBuff">待加密字节数组</param>
+            <returns>返回字节数组</returns>
+        </member>
+        <member name="M:CY_MVC.Utility.HASHCrypto.Encrypt(System.String,CY_MVC.Utility.HASHCrypto.DEncryptEnum,System.String)">
+            <summary>
+            加密
+            </summary>
+            <param name="p_InputText">待加密字符串</param>
+            <param name="p_EncryptEnum">加密类类型 DEncryptEnum</param>
+            <param name="p_SecretKey">加密盐值密钥</param>
+            <returns>返回大写字符串</returns>
+        </member>
+        <member name="M:CY_MVC.Utility.HASHCrypto.Encrypt2Byte(System.String,CY_MVC.Utility.HASHCrypto.DEncryptEnum,System.String)">
+             <summary>
+            加密
+             </summary>
+             <param name="p_InputText">待加密字符串</param>
+             <param name="p_EncryptEnum">加密类类型 DEncryptEnum</param>
+             <param name="p_SecretKey">加密盐值密钥</param>
+             <returns>返回字节数组</returns>
+        </member>
+        <member name="M:CY_MVC.Utility.HASHCrypto.Encrypt(System.Byte[],CY_MVC.Utility.HASHCrypto.DEncryptEnum,System.String)">
+            <summary>
+            加密
+            </summary>
+            <param name="p_InputBuff">待加密字节数组</param>
+            <param name="p_EncryptEnum">加密类类型 DEncryptEnum</param>
+            <param name="p_SecretKey">加密盐值密钥</param>
+            <returns>返回大写字符串</returns>
+        </member>
+        <member name="M:CY_MVC.Utility.HASHCrypto.Encrypt2Byte(System.Byte[],CY_MVC.Utility.HASHCrypto.DEncryptEnum,System.String)">
+            <summary>
+            加密
+            </summary>
+            <param name="p_InputBuff">待加密字节数组</param>
+            <param name="p_EncryptEnum">加密类类型 DEncryptEnum</param>
+            <param name="p_SecretKey">加密盐值密钥</param>
+            <returns>返回字节数组</returns>
+        </member>
+        <member name="P:CY_MVC.Utility.MemoryCacher.Keys">
+            <summary>
+            缓存键列表
+            </summary>
+        </member>
+        <member name="P:CY_MVC.Utility.MemoryCacher.Count">
+            <summary>
+            缓存总项数
+            </summary>
+        </member>
+        <member name="P:CY_MVC.Utility.MemoryCacher.CacheMemoryLimit">
+            <summary>
+            获取计算机上缓存可使用的内存量（以字节为单位）。
+            </summary>
+        </member>
+        <member name="P:CY_MVC.Utility.MemoryCacher.PhysicalMemoryLimit">
+            <summary>
+            获取缓存可使用的物理内存的百分比。
+            </summary>
+        </member>
+        <member name="P:CY_MVC.Utility.MemoryCacher.PollingInterval">
+            <summary>
+            获取在缓存更新其内存统计信息之前需等待的最大时间量。
+            </summary>
+        </member>
+        <member name="M:CY_MVC.Utility.MemoryCacher.Trim(System.Double)">
+            <summary>
+            从缓存中移除指定百分比的缓存项
+            </summary>
+            <param name="p_Percent">百分比 不得大于100</param>
+            <returns>返回被移除的项数</returns>
+        </member>
+        <member name="M:CY_MVC.Utility.MemoryCacher.Get``1(System.String)">
+            <summary>
+            获取对应缓存ID的缓存内容
+            </summary>
+            <typeparam name="T">缓存内容的类型</typeparam>
+            <param name="p_Key">缓存ID</param>
+            <returns>缓存内容</returns>
+        </member>
+        <member name="M:CY_MVC.Utility.MemoryCacher.Get(System.String)">
+            <summary>
+            获取对应缓存ID的缓存内容
+            </summary>
+            <param name="p_Key">缓存ID</param>
+            <returns>缓存内容</returns>
+        </member>
+        <member name="M:CY_MVC.Utility.MemoryCacher.Get(System.String[])">
+            <summary>
+            获取对应缓存ID的缓存内容
+            </summary>
+            <param name="p_Keys">缓存ID</param>
+            <returns>缓存内容</returns>
+        </member>
+        <member name="M:CY_MVC.Utility.MemoryCacher.Get(System.Collections.Generic.List{System.String})">
+            <summary>
+            获取对应缓存ID的缓存内容
+            </summary>
+            <param name="p_Keys">缓存ID</param>
+            <returns>缓存内容</returns>
+        </member>
+        <member name="M:CY_MVC.Utility.MemoryCacher.TryGet``1(System.String,``0@)">
+            <summary>
+            获取对应缓存ID的缓存内容
+            </summary>
+            <typeparam name="T">缓存内容的类型</typeparam>
+            <param name="p_Key">缓存ID</param>
+            <param name="p_Value">缓存内容</param>
+            <returns>是否存在</returns>
+        </member>
+        <member name="M:CY_MVC.Utility.MemoryCacher.TryGet(System.String,System.Object@)">
+            <summary>
+            获取对应缓存ID的缓存内容
+            </summary>
+            <param name="p_Key">缓存ID</param>
+            <param name="p_Value">缓存内容</param>
+            <returns>是否存在</returns>
+        </member>
+        <member name="M:CY_MVC.Utility.MemoryCacher.Contains(System.String)">
+            <summary>
+            对应缓存ID的缓存是否存在
+            </summary>
+            <param name="p_Key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CY_MVC.Utility.MemoryCacher.GetByKeyStartWith(System.String)">
+            <summary>
+            获取某个标识开头的缓存
+            </summary>
+            <param name="p_KeyStartsWith"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CY_MVC.Utility.MemoryCacher.GetByKeyContains(System.String)">
+            <summary>
+            获取包含某个标识的缓存
+            </summary>
+            <param name="p_KeyContains"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CY_MVC.Utility.MemoryCacher.GetAll">
+            <summary>
+            获取所有缓存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CY_MVC.Utility.MemoryCacher.Remove(System.String)">
+            <summary>
+            删除key缓存
+            </summary>
+            <param name="p_Key">缓存ID</param>
+        </member>
+        <member name="M:CY_MVC.Utility.MemoryCacher.RemoveByKeyStartWith(System.String)">
+            <summary>
+            清除某个标识开头的缓存
+            </summary>
+            <param name="p_KeyStartsWith">缓存ID开头标识</param>
+        </member>
+        <member name="M:CY_MVC.Utility.MemoryCacher.RemoveByKeyContains(System.String)">
+            <summary>
+            清除包含某个标识的缓存
+            </summary>
+            <param name="p_KeyContains">缓存ID标识</param>
+        </member>
+        <member name="M:CY_MVC.Utility.MemoryCacher.Clear">
+            <summary>
+            清除缓存
+            </summary>
+        </member>
+        <member name="M:CY_MVC.Utility.MemoryCacher.Set(System.String,System.Object,System.Runtime.Caching.CacheItemPriority,System.Nullable{System.DateTimeOffset},System.Nullable{System.TimeSpan},System.Collections.Generic.IEnumerable{System.Runtime.Caching.ChangeMonitor},System.Action{System.Runtime.Caching.CacheEntryRemovedArguments})">
+            <summary>
+            设置缓存
+            </summary>
+            <param name="p_Key">缓存ID</param>
+            <param name="p_Value">缓存内容</param>
+            <param name="p_CacheItemPriority">缓存的相对优先级</param>
+            <param name="p_AbsoluteExpiration">绝对到期时间(不可与相对到期时间同时设置,不设置的话设置为null)</param>
+            <param name="p_SlidingExpiration">相对到期时间(不可与绝对到期时间同时设置,不设置的话设置为null)</param>
+            <param name="p_ChangeMonitors">缓存依赖项</param>
+            <param name="p_OnRemovedCallback">缓存移除事件</param>
+        </member>
+        <member name="M:CY_MVC.Utility.SimpleTypeHelper.ConvertSimpleType(System.Object,System.Type)">
+            <summary>
+            ChangeType 对System.Convert.ChangeType进行了增强，支持(0,1)到bool的转换，字符串->枚举、int->枚举、字符串->Type
+            </summary>
+        </member>
+        <member name="M:CY_MVC.Utility.XmlDataHelper.LoadFile``1(System.String)">
+            <summary>
+            读取被序列化保存的数据
+            </summary>
+            <typeparam name="T">数据类型</typeparam>
+            <param name="p_FilePath">数据文件路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:CY_MVC.Utility.XmlDataHelper.SaveFile``1(``0,System.String)">
+            <summary>
+            序列化保存XML数据方法
+            </summary>
+            <typeparam name="T">数据类型</typeparam>
+            <param name="p_Obj">数据对象</param>
+            <param name="p_FilePath">数据文件</param>
+        </member>
+        <member name="M:CY_MVC.Utility.XmlDataHelper.Load``1(System.String)">
+            <summary>
+            读取被序列化保存的数据
+            </summary>
+            <typeparam name="T">数据类型</typeparam>
+            <param name="p_XmlContent">数据文件内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:CY_MVC.Utility.XmlDataHelper.Save``1(``0)">
+            <summary>
+            序列化保存XML数据方法
+            </summary>
+            <typeparam name="T">数据类型</typeparam>
+            <param name="p_Obj">数据对象</param>
+        </member>
+        <member name="M:CY_MVC.HttpModules.MvcModule.Init(System.Web.HttpApplication)">
+            <summary>初始化模块，并使其为处理请求做好准备。</summary>
+            <param name="p_App">一个 <see cref="T:System.Web.HttpApplication" />，它提供对 ASP.NET 应用程序内所有应用程序对象的公用的方法、属性和事件的访问</param>
+        </member>
+        <member name="M:CY_MVC.HttpModules.MvcModule.Dispose">
+            <summary>处置由实现 <see cref="T:System.Web.IHttpModule" /> 的模块使用的资源（内存除外）。</summary>
+        </member>
+        <member name="P:CY_MVC.StaticConfig.Domains">
+            <summary>
+                绑定域名（必填）
+            </summary>
+        </member>
+        <member name="P:CY_MVC.StaticConfig.MainDomain">
+            <summary>
+                主域名
+            </summary>
+        </member>
+        <member name="P:CY_MVC.StaticConfig.LibraryName">
+            <summary>
+                后台类库名称(必填)
+            </summary>
+        </member>
+        <member name="P:CY_MVC.StaticConfig.Key">
+            <summary>
+                密钥（必填）
+            </summary>
+        </member>
+        <member name="P:CY_MVC.StaticConfig.TemplatePath">
+            <summary>
+                模版路径（必填）
+            </summary>
+        </member>
+        <member name="P:CY_MVC.StaticConfig.BundleConfigPath">
+            <summary>
+                资源打包配置文件路径
+            </summary>
+        </member>
+        <member name="P:CY_MVC.StaticConfig.RootPath">
+            <summary>
+                程序根路径
+            </summary>
+        </member>
+        <member name="P:CY_MVC.StaticConfig.ForceHttps">
+            <summary>
+                程序根路径
+            </summary>
+        </member>
+        <member name="P:CY_MVC.StaticConfig.Debug">
+            <summary>
+                是否开启调试（页面执行效率跟踪 显示非合并打包的css和js文件）
+            </summary>
+        </member>
+        <member name="P:CY_MVC.StaticConfig.OnlineClient">
+            <summary>
+                是否开启在线客户统计
+            </summary>
+        </member>
+        <member name="P:CY_MVC.StaticConfig.IgnoreHandler">
+            <summary>
+                是否忽略后台代码
+            </summary>
+        </member>
+        <member name="P:CY_MVC.StaticConfig.WhiteSpaceClear">
+            <summary>
+                是否开启清理空白字符
+            </summary>
+        </member>
+        <member name="P:CY_MVC.StaticConfig.GzipLength">
+            <summary>
+                GZIP压缩最低大小，单位kb（推荐数值200）
+            </summary>
+        </member>
+        <member name="P:CY_MVC.StaticConfig.UrlRewriteRulesPath">
+            <summary>
+                URL重写规则文件路径
+            </summary>
+        </member>
+        <member name="P:CY_MVC.StaticConfig.UrlRewritePreRuleLibraryName">
+            <summary>
+                URL重写预生成规则类库名称
+            </summary>
+        </member>
+        <member name="P:CY_MVC.StaticConfig.UrlRewriteRulesSuffixFilters">
+            <summary>
+                URL重写规则后缀名过滤
+            </summary>
+        </member>
+        <member name="P:CY_MVC.StaticConfig.SeoRulesPath">
+            <summary>
+                SEO规则文件路径
+            </summary>
+        </member>
+        <member name="P:CY_MVC.StaticConfig.WordFilterRulesPath">
+            <summary>
+                关键词过滤规则文件路径
+            </summary>
+        </member>
+        <member name="P:CY_MVC.StaticConfig.ViewTemplateLibraryName">
+            <summary>
+                模版引擎类库名称
+            </summary>
+        </member>
+        <member name="P:CY_MVC.StaticConfig.CustomHandlers">
+            <summary>
+                模版引擎类库名称
+            </summary>
+        </member>
+        <member name="P:CY_MVC.StaticConfig.SecretKey">
+            <summary>
+                系统计算出来的密钥
+            </summary>
+        </member>
+        <member name="T:CY_MVC.ViewTemplate.Default.ViewTemplate">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:CY_MVC.ViewTemplate.Default.TemplateBody">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:CY_MVC.ViewTemplate.Default.TemplateBody.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:CY_MVC.ViewTemplate.Default.TemplateBody.ViewData">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:CY_MVC.ViewTemplate.ViewTemplateHelper.TemplateRender(System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            加载模版生成内容(一般用于加载子模版)
+            </summary>
+            <param name="p_TemplatePath">默认基于Template目录的相对路径,或者输入位于网站根目录下的绝对路径 </param>
+            <param name="viewdata"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CY_MVC.ViewTemplate.BaseViewTemplate">
+            <summary>
+                模版类基类
+            </summary>
+        </member>
+        <member name="F:CY_MVC.ViewTemplate.BaseViewTemplate.TemplateFile">
+            <summary>
+                模版文件
+            </summary>
+        </member>
+        <member name="P:CY_MVC.ViewTemplate.BaseViewTemplate.Extension">
+            <summary>
+                模版后缀名
+            </summary>
+        </member>
+        <member name="P:CY_MVC.ViewTemplate.BaseViewTemplate.TemplateText">
+            <summary>
+                模版内容
+            </summary>
+        </member>
+        <member name="M:CY_MVC.ViewTemplate.BaseViewTemplate.SetTemplateFile(System.String)">
+            <summary>
+                设置模版文件
+            </summary>
+            <param name="p_TemplateFile"></param>
+        </member>
+        <member name="M:CY_MVC.ViewTemplate.BaseViewTemplate.BuildString(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+                模版数据合并获得结果
+            </summary>
+            <param name="p_ViewData"></param>
+            <returns></returns>
+        </member>
+        <member name="F:CY_MVC.ViewTemplate.BaseViewTemplate.m_Disposed">
+            <summary>
+                m_Disposed
+            </summary>
+        </member>
+        <member name="M:CY_MVC.ViewTemplate.BaseViewTemplate.Dispose">
+            <summary>
+                Dispose
+            </summary>
+        </member>
+        <member name="M:CY_MVC.ViewTemplate.BaseViewTemplate.Dispose(System.Boolean)">
+            <summary>
+                Dispose
+            </summary>
+            <param name="p_Disposing"></param>
+        </member>
+        <member name="M:CY_MVC.ViewTemplate.BaseViewTemplate.Finalize">
+            <summary>
+                Dispose
+            </summary>
+        </member>
+    </members>
+</doc>

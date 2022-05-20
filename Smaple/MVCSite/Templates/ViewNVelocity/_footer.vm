@@ -1,0 +1,9 @@
+﻿    </div>
+    <div id="footer">
+        <div class="powered">
+        Processed in  ${processtime} second(s), queries. Powered by <a href="http://www.lpyedge.com" target="_blank" title="CY_MVC">CY_MVC</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

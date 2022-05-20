@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="我的关键词"/>
+    <script src="/Scripts/jquery.js" type="text/javascript" defer="defer"></script>
+    <link href="/Styles/Site.css" rel="stylesheet" type="text/css"/>
+    <link href="{{ TemplatePath }}css/index.css" rel="stylesheet" type="text/css"/>
+    <link href="{{ TemplatePath }}css/style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="wrapper">
+    <div id="header">
+        <div class="site">
+            <h2>
+                <a href="#">模版位置</a>
+            </h2>
+            <p>
+                {{ TemplatePath }}
+            </p>
+        </div>
+    </div>
+    <div id="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div id="footer">
+        <div class="powered">
+            Processed in {{ processtime }} second(s), queries. Powered by <a href="http://www.lpyedge.com" target="_blank" title="CY_MVC">CY_MVC</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
