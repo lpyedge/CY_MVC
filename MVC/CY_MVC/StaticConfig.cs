@@ -17,169 +17,186 @@ namespace CY_MVC
     {
         static StaticConfig()
         {
-            var config = ConfigurationManager.OpenExeConfiguration(Assembly.GetExecutingAssembly().CodeBase.Substring(8));
+            var path = Assembly.GetExecutingAssembly().CodeBase;
+            if (path != null)
+            {
+                if (path.StartsWith("file:///", StringComparison.OrdinalIgnoreCase))
+                {
+                    path = path.Substring(8);
+                }
+                else if (path.StartsWith("file://", StringComparison.OrdinalIgnoreCase))
+                {
+                    path = path.Substring(5);
+                }
 
-            RootPath = config.AppSettings.Settings["RootPath"] == null ||
-                       string.IsNullOrWhiteSpace(config.AppSettings.Settings["RootPath"].Value)
-                ? AppDomain.CurrentDomain.BaseDirectory.Replace("\\", "/")
-                : (AppDomain.CurrentDomain.BaseDirectory +
-                   config.AppSettings.Settings["RootPath"].Value.TrimStart('/').TrimStart('\\'))
-                    .Replace(
-                        "\\", "/");
+                var config = ConfigurationManager.OpenExeConfiguration(path);
 
-            TemplatePath = config.AppSettings.Settings["TemplatePath"] == null ||
-                           string.IsNullOrWhiteSpace(config.AppSettings.Settings["TemplatePath"].Value)
-                ? string.Empty : config.AppSettings.Settings["TemplatePath"].Value.Replace("\\", "/");
+                RootPath = config.AppSettings.Settings["RootPath"] == null ||
+                           string.IsNullOrWhiteSpace(config.AppSettings.Settings["RootPath"].Value)
+                    ? AppDomain.CurrentDomain.BaseDirectory.Replace("\\", "/")
+                    : (AppDomain.CurrentDomain.BaseDirectory +
+                       config.AppSettings.Settings["RootPath"].Value.TrimStart('/').TrimStart('\\'))
+                        .Replace(
+                            "\\", "/");
 
-            BundleConfigPath = config.AppSettings.Settings["BundleConfigPath"] == null ||
-                           string.IsNullOrWhiteSpace(config.AppSettings.Settings["BundleConfigPath"].Value)
-                ? "bundleconfig.json"
-                : config.AppSettings.Settings["BundleConfigPath"].Value.Replace("\\", "/");
+                TemplatePath = config.AppSettings.Settings["TemplatePath"] == null ||
+                               string.IsNullOrWhiteSpace(config.AppSettings.Settings["TemplatePath"].Value)
+                    ? string.Empty : config.AppSettings.Settings["TemplatePath"].Value.Replace("\\", "/");
 
-            LibraryName = config.AppSettings.Settings["LibraryName"] == null ||
-                          string.IsNullOrWhiteSpace(config.AppSettings.Settings["LibraryName"].Value)
-                ? string.Empty : config.AppSettings.Settings["LibraryName"].Value;
+                BundleConfigPath = config.AppSettings.Settings["BundleConfigPath"] == null ||
+                               string.IsNullOrWhiteSpace(config.AppSettings.Settings["BundleConfigPath"].Value)
+                    ? "bundleconfig.json"
+                    : config.AppSettings.Settings["BundleConfigPath"].Value.Replace("\\", "/");
 
-            Debug = config.AppSettings.Settings["Debug"] != null &&
-                         !string.IsNullOrWhiteSpace(config.AppSettings.Settings["Debug"].Value) ?
-                         bool.Parse(config.AppSettings.Settings["Debug"].Value)
-                         : false;
+                LibraryName = config.AppSettings.Settings["LibraryName"] == null ||
+                              string.IsNullOrWhiteSpace(config.AppSettings.Settings["LibraryName"].Value)
+                    ? string.Empty : config.AppSettings.Settings["LibraryName"].Value;
 
-            OnlineClient = config.AppSettings.Settings["OnlineClient"] != null &&
-                         !string.IsNullOrWhiteSpace(config.AppSettings.Settings["OnlineClient"].Value) ?
-                         bool.Parse(config.AppSettings.Settings["OnlineClient"].Value)
-                         : false;
+                Debug = config.AppSettings.Settings["Debug"] != null &&
+                             !string.IsNullOrWhiteSpace(config.AppSettings.Settings["Debug"].Value) ?
+                             bool.Parse(config.AppSettings.Settings["Debug"].Value)
+                             : false;
 
-            ForceHttps = config.AppSettings.Settings["ForceHttps"] != null &&
-                         !string.IsNullOrWhiteSpace(config.AppSettings.Settings["ForceHttps"].Value) &&
-                         bool.Parse(config.AppSettings.Settings["ForceHttps"].Value);
+                OnlineClient = config.AppSettings.Settings["OnlineClient"] != null &&
+                             !string.IsNullOrWhiteSpace(config.AppSettings.Settings["OnlineClient"].Value) ?
+                             bool.Parse(config.AppSettings.Settings["OnlineClient"].Value)
+                             : false;
 
-            IgnoreHandler = config.AppSettings.Settings["IgnoreHandler"] != null &&
-                            !string.IsNullOrWhiteSpace(config.AppSettings.Settings["IgnoreHandler"].Value) &&
-                            bool.Parse(config.AppSettings.Settings["IgnoreHandler"].Value);
+                ForceHttps = config.AppSettings.Settings["ForceHttps"] != null &&
+                             !string.IsNullOrWhiteSpace(config.AppSettings.Settings["ForceHttps"].Value) &&
+                             bool.Parse(config.AppSettings.Settings["ForceHttps"].Value);
 
-            WhiteSpaceClear = config.AppSettings.Settings["WhiteSpaceClear"] != null &&
-                              !string.IsNullOrWhiteSpace(config.AppSettings.Settings["WhiteSpaceClear"].Value) &&
-                              bool.Parse(config.AppSettings.Settings["WhiteSpaceClear"].Value);
+                IgnoreHandler = config.AppSettings.Settings["IgnoreHandler"] != null &&
+                                !string.IsNullOrWhiteSpace(config.AppSettings.Settings["IgnoreHandler"].Value) &&
+                                bool.Parse(config.AppSettings.Settings["IgnoreHandler"].Value);
 
-            GzipLength = config.AppSettings.Settings["GzipLength"] == null ||
-                         string.IsNullOrWhiteSpace(config.AppSettings.Settings["GzipLength"].Value)
-                ? 0
-                : int.Parse(config.AppSettings.Settings["GzipLength"].Value) * 1024;
+                WhiteSpaceClear = config.AppSettings.Settings["WhiteSpaceClear"] != null &&
+                                  !string.IsNullOrWhiteSpace(config.AppSettings.Settings["WhiteSpaceClear"].Value) &&
+                                  bool.Parse(config.AppSettings.Settings["WhiteSpaceClear"].Value);
 
-            UrlRewriteRulesPath = config.AppSettings.Settings["UrlRewriteRulesPath"] == null ||
-                                  string.IsNullOrWhiteSpace(
-                                      config.AppSettings.Settings["UrlRewriteRulesPath"].Value)
-                ? string.Empty
-                : RootPath +
-                  config.AppSettings.Settings["UrlRewriteRulesPath"].Value.TrimStart('/')
-                      .TrimStart('\\')
-                      .Replace("\\", "/");
+                GzipLength = config.AppSettings.Settings["GzipLength"] == null ||
+                             string.IsNullOrWhiteSpace(config.AppSettings.Settings["GzipLength"].Value)
+                    ? 0
+                    : int.Parse(config.AppSettings.Settings["GzipLength"].Value) * 1024;
 
-            UrlRewritePreRuleLibraryName = config.AppSettings.Settings["UrlRewritePreRuleLibraryName"] == null ||
-                                           string.IsNullOrWhiteSpace(
-                                               config.AppSettings.Settings["UrlRewritePreRuleLibraryName"].Value)
-                ? string.Empty : config.AppSettings.Settings["UrlRewritePreRuleLibraryName"].Value;
-
-            UrlRewriteRulesSuffixFilters = (config.AppSettings.Settings["UrlRewriteRulesSuffixFilters"] == null ||
-                                            string.IsNullOrWhiteSpace(
-                                                config.AppSettings.Settings["UrlRewriteRulesSuffixFilters"].Value)
-                ? string.Empty : config.AppSettings.Settings["UrlRewriteRulesSuffixFilters"].Value).Split(new[] { '|' },
-                    StringSplitOptions.RemoveEmptyEntries).Select(p => p.ToLowerInvariant()).ToArray();
-
-            SeoRulesPath = config.AppSettings.Settings["SeoRulesPath"] == null ||
-                           string.IsNullOrWhiteSpace(
-                               config.AppSettings.Settings["SeoRulesPath"].Value)
-                ? string.Empty
-                : RootPath +
-                  config.AppSettings.Settings["SeoRulesPath"].Value.TrimStart('/')
-                      .TrimStart('\\')
-                      .Replace("\\", "/");
-
-            WordFilterRulesPath = config.AppSettings.Settings["WordFilterRulesPath"] == null ||
-                                  string.IsNullOrWhiteSpace(
-                                      config.AppSettings.Settings["WordFilterRulesPath"].Value)
-                ? string.Empty
-                : RootPath +
-                  config.AppSettings.Settings["WordFilterRulesPath"].Value.TrimStart('/')
-                      .TrimStart('\\')
-                      .Replace("\\", "/");
-
-            ViewTemplateLibraryName = config.AppSettings.Settings["ViewTemplateLibraryName"] == null ||
+                UrlRewriteRulesPath = config.AppSettings.Settings["UrlRewriteRulesPath"] == null ||
                                       string.IsNullOrWhiteSpace(
-                                          config.AppSettings.Settings["ViewTemplateLibraryName"].Value)
-                ? string.Empty : config.AppSettings.Settings["ViewTemplateLibraryName"].Value;
+                                          config.AppSettings.Settings["UrlRewriteRulesPath"].Value)
+                    ? string.Empty
+                    : RootPath +
+                      config.AppSettings.Settings["UrlRewriteRulesPath"].Value.TrimStart('/')
+                          .TrimStart('\\')
+                          .Replace("\\", "/");
 
-            Key = config.AppSettings.Settings["Key"] == null ||
-                  string.IsNullOrWhiteSpace(config.AppSettings.Settings["Key"].Value)
-                ? string.Empty : config.AppSettings.Settings["Key"].Value;
+                UrlRewritePreRuleLibraryName = config.AppSettings.Settings["UrlRewritePreRuleLibraryName"] == null ||
+                                               string.IsNullOrWhiteSpace(
+                                                   config.AppSettings.Settings["UrlRewritePreRuleLibraryName"].Value)
+                    ? string.Empty : config.AppSettings.Settings["UrlRewritePreRuleLibraryName"].Value;
 
-            MainDomain = config.AppSettings.Settings["MainDomain"] == null ||
-                         string.IsNullOrWhiteSpace(config.AppSettings.Settings["MainDomain"].Value)
-                ? string.Empty : config.AppSettings.Settings["MainDomain"].Value;
+                UrlRewriteRulesSuffixFilters = (config.AppSettings.Settings["UrlRewriteRulesSuffixFilters"] == null ||
+                                                string.IsNullOrWhiteSpace(
+                                                    config.AppSettings.Settings["UrlRewriteRulesSuffixFilters"].Value)
+                    ? string.Empty : config.AppSettings.Settings["UrlRewriteRulesSuffixFilters"].Value).Split(new[] { '|' },
+                        StringSplitOptions.RemoveEmptyEntries).Select(p => p.ToLowerInvariant()).ToArray();
 
-            Domains =
-                (config.AppSettings.Settings["Domains"] == null ||
-                 string.IsNullOrWhiteSpace(config.AppSettings.Settings["Domains"].Value)
-                    ? new HashSet<string>()
-                    : new HashSet<string>((config.AppSettings.Settings["Domains"].Value).Split(new[] { '|' },
-                        StringSplitOptions.RemoveEmptyEntries).Select(p => p.ToLowerInvariant())));
+                SeoRulesPath = config.AppSettings.Settings["SeoRulesPath"] == null ||
+                               string.IsNullOrWhiteSpace(
+                                   config.AppSettings.Settings["SeoRulesPath"].Value)
+                    ? string.Empty
+                    : RootPath +
+                      config.AppSettings.Settings["SeoRulesPath"].Value.TrimStart('/')
+                          .TrimStart('\\')
+                          .Replace("\\", "/");
 
-            //加载自定义Handlers
-            XmlDocument xd = new XmlDocument();
-            xd.Load(AppDomain.CurrentDomain.BaseDirectory + "web.config");
-            if (xd != null)
-            {
-                var r = XmlDocHelper.Find(xd, "configuration", "system.webServer", "handlers");
-                if (r != null)
+                WordFilterRulesPath = config.AppSettings.Settings["WordFilterRulesPath"] == null ||
+                                      string.IsNullOrWhiteSpace(
+                                          config.AppSettings.Settings["WordFilterRulesPath"].Value)
+                    ? string.Empty
+                    : RootPath +
+                      config.AppSettings.Settings["WordFilterRulesPath"].Value.TrimStart('/')
+                          .TrimStart('\\')
+                          .Replace("\\", "/");
+
+                ViewTemplateLibraryName = config.AppSettings.Settings["ViewTemplateLibraryName"] == null ||
+                                          string.IsNullOrWhiteSpace(
+                                              config.AppSettings.Settings["ViewTemplateLibraryName"].Value)
+                    ? string.Empty : config.AppSettings.Settings["ViewTemplateLibraryName"].Value;
+
+                Key = config.AppSettings.Settings["Key"] == null ||
+                      string.IsNullOrWhiteSpace(config.AppSettings.Settings["Key"].Value)
+                    ? string.Empty : config.AppSettings.Settings["Key"].Value;
+
+                MainDomain = config.AppSettings.Settings["MainDomain"] == null ||
+                             string.IsNullOrWhiteSpace(config.AppSettings.Settings["MainDomain"].Value)
+                    ? string.Empty : config.AppSettings.Settings["MainDomain"].Value;
+
+                Domains =
+                    (config.AppSettings.Settings["Domains"] == null ||
+                     string.IsNullOrWhiteSpace(config.AppSettings.Settings["Domains"].Value)
+                        ? new HashSet<string>()
+                        : new HashSet<string>((config.AppSettings.Settings["Domains"].Value).Split(new[] { '|' },
+                            StringSplitOptions.RemoveEmptyEntries).Select(p => p.ToLowerInvariant())));
+
+                //加载自定义Handlers
+                XmlDocument xd = new XmlDocument();
+                xd.Load(AppDomain.CurrentDomain.BaseDirectory + "web.config");
+                if (xd != null)
                 {
-                    CustomHandlers = r.ChildNodes.Cast<XmlNode>().Select(p => p.Attributes["path"].InnerXml).ToArray();
+                    var r = XmlDocHelper.Find(xd, "configuration", "system.webServer", "handlers");
+                    if (r != null)
+                    {
+                        CustomHandlers = r.ChildNodes.Cast<XmlNode>().Select(p => p.Attributes["path"].InnerXml).ToArray();
+                    }
                 }
-            }
 
-            if (string.IsNullOrWhiteSpace(TemplatePath) || string.IsNullOrWhiteSpace(LibraryName))
-            {
-                throw new Exception("必须设置模版路径和后台程序类库名称！");
-            }
-
-            FileInfo bundleconfigfile = new FileInfo(RootPath + BundleConfigPath);
-            if (bundleconfigfile.Exists)
-            {
-                var bundleconfigstr = File.ReadAllText(bundleconfigfile.FullName);
-                var bundleconfig = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(bundleconfigstr);
-                foreach (dynamic bundlesubconfig in bundleconfig)
+                if (string.IsNullOrWhiteSpace(TemplatePath) || string.IsNullOrWhiteSpace(LibraryName))
                 {
-                    System.Web.Optimization.Bundle bundle = null;
-                    var outputfilename = ((string)bundlesubconfig.outputFileName);
-                    if (outputfilename.EndsWith(".css", StringComparison.OrdinalIgnoreCase))
+                    throw new Exception("必须设置模版路径和后台程序类库名称！");
+                }
+
+                FileInfo bundleconfigfile = new FileInfo(RootPath + BundleConfigPath);
+                if (bundleconfigfile.Exists)
+                {
+                    var bundleconfigstr = File.ReadAllText(bundleconfigfile.FullName);
+                    var bundleconfig = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(bundleconfigstr);
+                    foreach (dynamic bundlesubconfig in bundleconfig)
                     {
-                        bundle = new System.Web.Optimization.StyleBundle(outputfilename);
-                    }
-                    else if (outputfilename.EndsWith(".js", StringComparison.OrdinalIgnoreCase))
-                    {
-                        bundle = new System.Web.Optimization.ScriptBundle(outputfilename);
-                    }
-                    if (bundle != null)
-                    {
-                        List<string> inputfiles = new List<string>();
-                        foreach (string inputfile in bundlesubconfig.inputFiles)
+                        System.Web.Optimization.Bundle bundle = null;
+                        var outputfilename = ((string)bundlesubconfig.outputFileName);
+                        if (outputfilename.EndsWith(".css", StringComparison.OrdinalIgnoreCase))
                         {
-                            if (inputfile.StartsWith("~/"))
-                            {
-                                inputfiles.Add(inputfile);
-                            }
+                            bundle = new System.Web.Optimization.StyleBundle(outputfilename);
                         }
-                        bundle.Include(inputfiles.ToArray());
-                        System.Web.Optimization.BundleTable.Bundles.Add(bundle);
+                        else if (outputfilename.EndsWith(".js", StringComparison.OrdinalIgnoreCase))
+                        {
+                            bundle = new System.Web.Optimization.ScriptBundle(outputfilename);
+                        }
+                        if (bundle != null)
+                        {
+                            List<string> inputfiles = new List<string>();
+                            foreach (string inputfile in bundlesubconfig.inputFiles)
+                            {
+                                if (inputfile.StartsWith("~/"))
+                                {
+                                    inputfiles.Add(inputfile);
+                                }
+                            }
+                            bundle.Include(inputfiles.ToArray());
+                            System.Web.Optimization.BundleTable.Bundles.Add(bundle);
+                        }
                     }
+
+                    System.Web.Optimization.BundleTable.EnableOptimizations = !Debug;
                 }
 
-                System.Web.Optimization.BundleTable.EnableOptimizations = !Debug;
+                if (string.IsNullOrWhiteSpace(Key) || Domains.Count < 1)
+                {
+                    throw new Exception("必须设置网站域名和密钥！");
+                }
             }
-
-            if (string.IsNullOrWhiteSpace(Key) || Domains.Count < 1)
+            else
             {
-                throw new Exception("必须设置网站域名和密钥！");
+                throw new Exception("加载MVC配置文件失败！");
             }
         }
 
